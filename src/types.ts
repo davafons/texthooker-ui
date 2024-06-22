@@ -46,6 +46,7 @@ export interface Settings {
 	onlineFont$: string;
 	preventLastDuplicate$: number;
 	maxLines$: number;
+	maxLineLength$: number;
 	afkTimer$: number;
 	adjustTimerOnAfk$: boolean;
 	enableExternalClipboardMonitor$: boolean;

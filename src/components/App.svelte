@@ -29,6 +29,7 @@
 		isPaused$,
 		lineData$,
 		maxLines$,
+		maxLineLength$,
 		newLine$,
 		notesOpen$,
 		onlineFont$,
@@ -315,12 +316,14 @@
 
 		if (!lineToAppend) {
 			canAppend = false;
+		} else if (lineToAppend.length > $maxLineLength$) {
+			canAppend = false;
 		} else if ($preventGlobalDuplicate$) {
 			canAppend = !$uniqueLines$.has(lineToAppend);
 			$uniqueLines$.add(lineToAppend);
 		} else if ($preventLastDuplicate$ && $lineData$.length) {
 			canAppend = $lineData$.slice(-$preventLastDuplicate$).every((line) => line.text !== lineToAppend);
-		}
+		} 
 
 		return canAppend ? lineToAppend : undefined;
 	}

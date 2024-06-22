@@ -33,6 +33,7 @@
 		fontSize$,
 		lineData$,
 		maxLines$,
+		maxLineLength$,
 		newLine$,
 		onlineFont$,
 		openDialog$,
@@ -692,6 +693,18 @@
 			min="0"
 			value={$maxLines$}
 			on:blur={handleMaxLinesBlur}
+		/>
+		<span class="label-text col-span-2">Max line length</span>
+		<input
+			type="number"
+			class="input input-bordered h-8 mb-2 col-span-2"
+			min="0"
+			bind:value={$maxLineLength$}
+			on:blur={() => {
+				if ($maxLineLength$ === null || $maxLineLength$ < 0) {
+					$maxLineLength$ = 0;
+				}
+			}}
 		/>
 		<span class="label-text col-span-2">AFK Timer (s)</span>
 		<input
